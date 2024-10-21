@@ -1,0 +1,33 @@
+spring:
+  application.name: demo
+  data:
+    mongodb:
+      uri: ${MONGODB_URL}
+      database: my_organization
+  ai:
+    openai:
+      embedding.options.model: text-embedding-ada-002
+      api-key: ${OPENAI_APIKEY}
+      chat:
+        options.model: gpt-4o-mini
+    vectorstore:
+      mongodb:
+        index-name: vector_index
+        collection-name: vector_store
+        initialize-schema: false
+server:
+  servlet:
+    encoding:
+      charset: UTF-8
+      enabled: true
+      force: true
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+
+
+logging:
+  level:
+    org.springframework.ai: DEBUG
